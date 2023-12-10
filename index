@@ -1,0 +1,47 @@
+// Import required modules
+const express = require('express');
+const app = express();
+const port = 3000;
+
+// Middleware to parse JSON data
+app.use(express.json());
+
+// GET all books
+app.get('/books', (req, res) => {
+    // Logic to fetch all books from the database
+    res.send('Get all books');
+});
+
+// GET a specific book by ID
+app.get('/books/:id', (req, res) => {
+    const bookId = req.params.id;
+    // Logic to fetch a book by ID from the database
+    res.send(`Get book with ID ${bookId}`);
+});
+
+// POST a new book
+app.post('/books', (req, res) => {
+    const bookData = req.body;
+    // Logic to create a new book in the database
+    res.send('Create a new book');
+});
+
+// PUT/UPDATE an existing book by ID
+app.put('/books/:id', (req, res) => {
+    const bookId = req.params.id;
+    const bookData = req.body;
+    // Logic to update an existing book by ID in the database
+    res.send(`Update book with ID ${bookId}`);
+});
+
+// DELETE a book by ID
+app.delete('/books/:id', (req, res) => {
+    const bookId = req.params.id;
+    // Logic to delete a book by ID from the database
+    res.send(`Delete book with ID ${bookId}`);
+});
+
+// Start the server
+app.listen(port, () => {
+    console.log(`Server listening on port ${port}`);
+});
